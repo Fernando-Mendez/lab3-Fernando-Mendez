@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.Polygon;
 import javax.swing.JPanel;
  
 public class MyPanelClass extends JPanel {
@@ -20,25 +21,73 @@ public class MyPanelClass extends JPanel {
                         int y2 = getHeight() - myInsets.bottom - 1;
                         int width = x2 - x1;
                         int height = y2 - y1;
+                        
+                        
                         //Paint the background
-                        g.setColor(Color.LIGHT_GRAY);
+                        g.setColor(Color.WHITE);
                         g.fillRect(x1, y1, width + 1, height + 1);
-//                        //Draw a border
-//                        g.setColor(Color.YELLOW);
-//                        g.drawRect(x1, y1, width, height);
-//                        g.setColor(Color.RED);
-//                        g.drawRect(x1+10, y1+10, width-20, height-20);
-//                        
-//                        g.setColor(Color.WHITE);
-//                        g.drawLine(x1, y1, x2, y2);
-//                        
-//                        g.setColor(Color.GREEN);
-//                        g.drawLine(width, y1, x1, height);
                         
-                        g.setColor(Color.CYAN);
-                        int ovalDiameter = 55;
-                        g.fillOval( width/2 - ovalDiameter/2 , height/2 - ovalDiameter/2, ovalDiameter , ovalDiameter );
+                        //Top Red Square
+                        Polygon topSquare = new Polygon();
+                        topSquare.addPoint(x1 , y1);
+                        topSquare.addPoint(x2+1, y1);
+                        topSquare.addPoint(x2+1, height/5);
+                        topSquare.addPoint(x1, height/5);
+                        g.setColor(Color.RED);
+                        g.fillPolygon(topSquare);
                         
+                        //Middle Red Square
+                        Polygon middleSquare = new Polygon();
+                        middleSquare.addPoint(x1 , height/3);
+                        middleSquare.addPoint(x2+1, height/3);
+                        middleSquare.addPoint(x2+1, height*2/3);
+                        middleSquare.addPoint(x1, height*2/3);
+                        g.setColor(Color.RED);
+                        g.fillPolygon(middleSquare);
                         
-            }
-}
+                        //Bottom Red Square
+                        Polygon bottomSquare = new Polygon();
+                        bottomSquare.addPoint(x1, height*4/5);
+                        bottomSquare.addPoint(x2+1, height*4/5);
+                        bottomSquare.addPoint(x2+1, y2+1);
+                        bottomSquare.addPoint(x1, y2+1);
+                        g.setColor(Color.RED);
+                        g.fillPolygon(bottomSquare);
+                        
+                        //Triangle for the Flag
+                        Polygon triangle = new Polygon();
+                        triangle.addPoint(x1,y1);
+                        triangle.addPoint(width/2, height/2);
+                        triangle.addPoint(x1, y1+height);
+                        g.setColor(Color.BLUE);
+                        g.fillPolygon(triangle);
+                        
+                        //Star for the Flag
+                        Polygon star = new Polygon();
+                        	int lusp = width/10 - 10;
+                        	int tmp = ((lusp*(5/2) +width/1000)+ (lusp*3) +width/1000)/2;
+	                        //Flat star surface - Left side
+	                        star.addPoint(lusp +width/1000, (height/2) - (height/(19/2)));
+	                        star.addPoint(lusp*2 +width/1000, (height/2) - (height/(19/2)));
+	                        //Pointy part of the star
+	                        star.addPoint(tmp, height/3);
+	                        //Flat star surface - Right side
+	                        star.addPoint(lusp*3 +width/1000, (height/2) - (height/(19/2)));
+	                        star.addPoint(lusp*4 +width/1000, (height/2) - (height/(19/2)));
+	                        
+	                        //Middle Part of the Star and Bottom Leg - Right side
+	                        star.addPoint(lusp*3 +width/1000, (height/2)-50);
+	                        star.addPoint((lusp*4 + lusp*3)/2 +width/1000 + 30, (height*2/3) - (height/(19/2)) + 90);
+	                        
+	                        //Middle Part of the Star - Center Side
+	                        star.addPoint(tmp, height/2);
+	                        //Middle Part of the Star and Bottom Leg - Left Side(		(height*2/3) - 50
+	                        star.addPoint((lusp + lusp*2)/2 +width/1000 - 30, height*2/3 - (height/(19/2)) + 90 );
+	                        star.addPoint(lusp*2 +width/1000, (height/2)-50);    
+	                    	  
+	             
+	                        g.setColor(Color.WHITE);
+	                        g.fillPolygon(star);
+
+            }//End of Method
+}//End of Class
