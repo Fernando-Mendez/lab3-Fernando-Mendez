@@ -21,8 +21,7 @@ public class MyPanelClass extends JPanel {
                         int y2 = getHeight() - myInsets.bottom - 1;
                         int width = x2 - x1;
                         int height = y2 - y1;
-                        
-                        
+                                           
                         //Paint the background
                         g.setColor(Color.WHITE);
                         g.fillRect(x1, y1, width + 1, height + 1);
@@ -76,14 +75,14 @@ public class MyPanelClass extends JPanel {
 	                        star.addPoint(lusp*4 +width/1000, (height/2) - (height/(19/2)));
 	                        
 	                        //Middle Part of the Star and Bottom Leg - Right side
-	                        star.addPoint(lusp*3 +width/1000, (height/2)-50);
-	                        star.addPoint((lusp*4 + lusp*3)/2 +width/1000 + 30, (height*2/3) - (height/(19/2)) + 90);
+	                        star.addPoint(lusp*3 +width/1500, (height/2)-50*(height/1000));
+	                        star.addPoint((lusp*4 + lusp*3)/2 +width/1000 + (width/1000)*30, (height*2/3) - (height/(19/2)) + (height/1000)*90);
 	                        
 	                        //Middle Part of the Star - Center Side
 	                        star.addPoint(tmp, height/2);
 	                        //Middle Part of the Star and Bottom Leg - Left Side(		(height*2/3) - 50
-	                        star.addPoint((lusp + lusp*2)/2 +width/1000 - 30, height*2/3 - (height/(19/2)) + 90 );
-	                        star.addPoint(lusp*2 +width/1000, (height/2)-50);    
+	                        star.addPoint((lusp + lusp*2)/2 +width/1500 - (width/1000)*30, height*2/3 - (height/(19/2)) + (height/1000)*90 );
+	                        star.addPoint(lusp*2 +width/1000, (height/2)-(height/1000)*50);    
 	                    	  
 	             
 	                        g.setColor(Color.WHITE);
